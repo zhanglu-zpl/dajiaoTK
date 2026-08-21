@@ -1,0 +1,47 @@
+<!doctype html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>大角几何 · 初中几何题库</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=DM+Mono:wght@400;500&family=Manrope:wght@400;500;600;700;800&family=Noto+Sans+SC:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <div class="app-shell">
+      <aside class="sidebar">
+        <div class="brand"><span class="brand-mark">∠</span><div><div class="brand-name">大角几何</div><div class="brand-sub">MIDDLE SCHOOL GEOMETRY</div></div></div>
+        <div class="side-label">题型分类</div>
+        <nav id="categoryNav" class="category-nav" aria-label="题型分类"></nav>
+      </aside>
+
+      <main class="main-content">
+        <header class="topbar">
+          <div><div class="eyebrow">GEOMETRY QUESTION BANK</div><h1>初中几何题库</h1><p class="lede">点击题目即可查看原题与对应的解析答案。</p></div>
+        </header>
+
+        <section class="toolbar">
+          <div class="search-wrap"><span class="search-icon">⌕</span><input id="searchInput" type="search" placeholder="搜索：相似、圆、辅助线、最值……" /></div>
+          <div class="view-toggle"><button class="view-btn active" data-view="grid">▦</button><button class="view-btn" data-view="list">☰</button></div>
+        </section>
+
+        <section class="section-heading"><div><div class="eyebrow">QUESTIONS</div><h2 id="sectionTitle">全部题目</h2></div></section>
+        <section id="topicGrid" class="topic-grid question-grid"></section>
+
+      </main>
+    </div>
+
+    <div id="questionModal" class="modal hidden" aria-hidden="true">
+      <div class="modal-backdrop" data-question-close="true"></div>
+      <section class="question-panel" role="dialog" aria-modal="true">
+        <div class="question-header"><div><div class="eyebrow">QUESTION DETAIL</div><h3 id="questionTitle">题目详情</h3><p id="questionMeta" class="reader-meta"></p></div><button id="closeQuestion" class="close-btn">×</button></div>
+        <div class="question-toolbar"><span id="questionSource"></span><div class="answer-controls"><button id="previousAnswer" class="answer-page-btn" type="button" aria-label="上一页解析">←</button><label class="answer-page-label">第 <input id="answerPageInput" type="number" min="20" max="33" value="20" aria-label="解析页码" /> 页</label><button id="nextAnswer" class="answer-page-btn" type="button" aria-label="下一页解析">→</button><button id="showAnswer" class="answer-toggle">查看解析答案</button></div></div>
+        <div class="question-body"><div class="question-image-wrap"><img id="questionImage" alt="题目原页" /><img id="answerImage" class="hidden-answer" alt="答案解析原页" /></div></div>
+      </section>
+    </div>
+
+    <script src="app.js"></script>
+  </body>
+</html>
