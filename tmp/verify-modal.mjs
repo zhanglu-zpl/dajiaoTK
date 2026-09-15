@@ -24,6 +24,9 @@ function makeEl(selector) {
     disabled: false,
     classList: makeClassList(),
     dataset: {},
+    attributes: {},
+    setAttribute: (k, v) => { handlers.attrs = handlers.attrs || {}; handlers.attrs[k] = v; },
+    getAttribute: k => (handlers.attrs || {})[k],
     addEventListener: (type, fn) => { handlers[type] = fn; },
     querySelectorAll: () => [],
     click: () => handlers.click && handlers.click({ target: {} }),
@@ -45,6 +48,8 @@ vm.runInContext(code, ctx);
 
 const $ = sel => document.querySelector(sel);
 const get = id => $(id);
+// vm 中顶层 const 不会成为 context 对象的属性，需在同一 context 内再求值一次取回。
+const allQuestions = vm.runInContext('allQuestions', ctx);
 
 let failures = 0;
 function check(label, actual, expected) {
@@ -54,7 +59,7 @@ function check(label, actual, expected) {
 }
 
 // ---- 场景 1：辅助线综合练第 13 题（原题第 16 页，解析第 20-33 页需自行翻找）----
-const q13 = ctx.allQuestions.find(q => q.id === 'aux-13');
+const q13 = allQuestions.find(q => q.id === 'aux-13');
 ctx.openQuestion(q13);
 check('页码行显示原题/解析页提示', get('#questionSource').textContent, '原题第 16 页 · 解析第 20-33 页，请自行翻找');
 check('标题头不再重复该行', get('#questionMeta').textContent, '');
@@ -83,7 +88,7 @@ get('#previousAnswer').click();
 check('下限封顶在第 20 页', Number(get('#answerPageInput').value), 20);
 
 // ---- 场景 4：已核对解析页码的资料（手写笔记模型）不受影响 ----
-const model = ctx.allQuestions.find(q => q.id === 'note-model-3');
+const model = allQuestions.find(q => q.id === 'note-model-3');
 ctx.openQuestion(model);
 check('模型题页码行文案', get('#questionSource').textContent, '可使用页码框和上下按钮查找解析');
 check('模型题头部保留已配置解析页', get('#questionMeta').textContent, `原题第 ${model.page} 页 · 已配置解析 ${model.page} 页`);
