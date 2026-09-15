@@ -37,7 +37,7 @@
       <div class="modal-backdrop" data-question-close="true"></div>
       <section class="question-panel" role="dialog" aria-modal="true">
         <div class="question-header"><div><div class="eyebrow">QUESTION DETAIL</div><h3 id="questionTitle">题目详情</h3><p id="questionMeta" class="reader-meta"></p></div><button id="closeQuestion" class="close-btn">×</button></div>
-        <div class="question-toolbar"><span id="questionSource"></span><div class="answer-controls"><button id="previousAnswer" class="answer-page-btn" type="button" aria-label="上一页解析">←</button><label class="answer-page-label">第 <input id="answerPageInput" type="number" min="20" max="33" value="20" aria-label="解析页码" /> 页</label><button id="nextAnswer" class="answer-page-btn" type="button" aria-label="下一页解析">→</button><button id="showAnswer" class="answer-toggle">查看解析答案</button></div></div>
+        <div class="question-toolbar"><span id="questionSource" class="page-row-meta"></span><div class="answer-controls"><button id="previousAnswer" class="answer-page-btn" type="button" aria-label="上一页解析">←</button><label class="answer-page-label">第 <input id="answerPageInput" type="number" min="20" max="33" value="20" aria-label="解析页码" /> 页</label><button id="nextAnswer" class="answer-page-btn" type="button" aria-label="下一页解析">→</button><button id="showAnswer" class="answer-toggle">查看解析答案</button><button id="jumpAnswer" class="answer-hint" type="button" title="按当前解析页码向后跳 3 页">答案页+3跳转</button></div></div>
         <div class="question-body"><div class="question-image-wrap"><img id="questionImage" alt="题目原页" /><img id="answerImage" class="hidden-answer" alt="答案解析原页" /></div></div>
       </section>
     </div>
