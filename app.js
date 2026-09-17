@@ -58,7 +58,8 @@ const noteModelSpecs = [
 const noteModels = noteModelSpecs.map(([title, category, page], index) => ({
   id:`note-model-${index+1}`, no:`M${index+1}`, title, category, shape:'书本模型页', method:'整页扫描', source:'model-scan', page, answerPages:[{page, image:`assets/note-models/page-${String(page).padStart(3,'0')}.jpg`}], thumb:`assets/note-models/page-${String(page).padStart(3,'0')}.jpg`, note:'《中考几何满分冲刺》书本扫描页，模型讲解与例题在同一页。'
 }));
-const allQuestions = questions.concat(noteModels);
+// 书本扫描页排在前面，打开“全部题型”即可看到；其后是 14 道辅助线原题。
+const allQuestions = noteModels.concat(questions);
 const sources = [
   {id:'guide-answers',title:'中考几何一本通参考答案',type:'答案',pages:64,path:'D:/办公/大角几何/中考几何一本通参考答案.pdf',tags:'答案解析 · 一本通'},
   {id:'guide-aux',title:'中考几何一本通上册 · 辅助线意识',type:'题册',pages:104,path:'D:/办公/大角几何/中考几何一本通上册辅助线意识.pdf',tags:'辅助线 · 题型训练'},
